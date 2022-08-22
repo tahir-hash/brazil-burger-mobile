@@ -9,6 +9,7 @@ import { CataloguePageRoutingModule } from './catalogue-routing.module';
 import { CataloguePage } from './catalogue.page';
 import { CardComponent } from './components/card/card.component';
 import { RouterModule } from '@angular/router';
+import { LoaderComponent } from '../loader/loader.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,8 @@ import { RouterModule } from '@angular/router';
     CataloguePageRoutingModule,
     RouterModule
   ],
-  declarations: [CataloguePage,CardComponent]
+  declarations: [CataloguePage,CardComponent,LoaderComponent],
+  exports: [LoaderComponent]
+
 })
 export class CataloguePageModule {}

@@ -1,8 +1,14 @@
 <ion-header>
   <ion-toolbar>
+   
     <ion-title>CATALOGUE</ion-title>
   </ion-toolbar>
 </ion-header>
+<ng-container *ngIf="catalogue==undefined">
+  <ion-content>
+    <app-loader></app-loader>
+  </ion-content>
+</ng-container>
 <ng-container *ngIf="catalogue!=undefined">
 <ion-content [fullscreen]="true">
   <ion-grid>
@@ -16,6 +22,12 @@
         </ion-slide>
         <ion-slide>
           <img class="img" width="500" src="assets/images/burg2.jpg" alt="" />
+        </ion-slide>
+        <ion-slide>
+          <img class="img" width="500" src="assets/images/burg3.jpeg" alt="" />
+        </ion-slide>
+        <ion-slide>
+          <img class="img" width="500" src="assets/images/burg4.jpg" alt="" />
         </ion-slide>
       </ion-slides>
     </ion-row>
