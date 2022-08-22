@@ -8,8 +8,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'catalogue',
     pathMatch: 'full'
+  },
+  {
+    path: 'catalogue',
+    loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule)
+  },
+  {
+    path: 'details-products',
+    loadChildren: () => import('./details-products/details-products.module').then( m => m.DetailsProductsPageModule)
   },
 ];
 
