@@ -32,7 +32,8 @@ export class LoginPage implements OnInit {
       data => {
         this.token.saveToken(data.token);
         localStorage.setItem('userId', data.id)
-        this.router.navigate(['/catalogue']);
+        this.router.navigateByUrl('/catalogue');
+        //location.reload();
       },
       err => {
         console.log(err);

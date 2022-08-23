@@ -7,7 +7,7 @@ import { TokenService } from './Shared/services/token.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  isLogged:boolean = false;
-  constructor(private token:TokenService) {}
+  constructor(){}
+  
 
 }
