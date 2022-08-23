@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 import {map}  from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Catalogue } from './models/catalogue';
-
+const apiUrl=environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitService {
-  private url:string = "https://tahirbrazilburger.herokuapp.com/api/catalogues";
-  private urlDetails:string = "https://tahirbrazilburger.herokuapp.com/api/details_produits";
-  private urlMenu:string= "https://tahirbrazilburger.herokuapp.com/api/menus"
+  private url:string = `${apiUrl}/catalogues`;
+  private urlDetails:string = `${apiUrl}/details_produits`;
+  private urlMenu:string= `${apiUrl}/menus`
 
   constructor(private http: HttpClient) { }
 
@@ -26,5 +27,9 @@ export class ProduitService {
         return data;
       })
     )
+  }
+
+  one$=(id:any)=>{
+    return this.http.get(`${this.urlDetails}/${id}`)
   }
 }

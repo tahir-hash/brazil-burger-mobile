@@ -3,11 +3,45 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="catalogue"></ion-back-button>
     </ion-buttons>
-    <ion-title>details-products</ion-title>
+    <ion-title>Details produits</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-  <h1>MOUHAMADOU TAHIR MBAYE</h1>
-</ion-content>
+<ng-container *ngIf="produit!=undefined">
+  <ng-container *ngIf="produit.burger">
+    <ion-content class="ion-text-justify">
+      <img class="img-details mx-auto mt-2" src="data:image/png;base64,{{produit?.burger.image}}" width="350" height="300"/>
+      <div class="info-sub ">
+        <ion-card-title  style="color: #D4401F; margin-right: 27%;">{{produit?.burger.nom|uppercase}}</ion-card-title>
+        <ion-card-subtitle>{{produit?.burger.prix}} FCFA</ion-card-subtitle>
+        <ng-container class="ion-text-center" >
+          <ion-button class="tahir-button">J'achete</ion-button>
+       </ng-container>
+          <div class="describe mt-5 d-flex justify-content-around">
+              <ion-text>
+              <h4>{{produit?.burger.description}}</h4>
+              </ion-text>      
+          </div>
+      </div>
+  </ion-content>
+  </ng-container>
+  <ng-container *ngIf="produit.menu">
+    <ion-content class="ion-text-justify">
+      <img class="img-details mx-auto mt-2" src="data:image/png;base64,{{produit?.menu.image}}" width="350" height="300"/>
+      <div class="info-sub ">
+        <ion-card-title  style="color: #D4401F; margin-right: 27%;">{{produit?.menu.nom|uppercase}}</ion-card-title>
+        <ion-card-subtitle>{{produit?.menu.prix}} FCFA</ion-card-subtitle>
+        <ng-container class="ion-text-center" >
+          <ion-button class="tahir-button">J'achete</ion-button>
+       </ng-container>
+          <div class="describe mt-5 d-flex justify-content-around">
+              <ion-text>
+              <h4>{{produit?.menu.description}}</h4>
+              </ion-text>      
+          </div>
+      </div>
+  </ion-content>
+  </ng-container>
+</ng-container>
+

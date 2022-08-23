@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { Produit } from '../Shared/models/produit';
 import { ProduitService } from '../Shared/produit.service';
 
@@ -10,7 +11,7 @@ import { ProduitService } from '../Shared/produit.service';
 export class CataloguePage implements OnInit {
   catalogue: Produit[] | undefined = undefined;
 
-  constructor(private service: ProduitService) { }
+  constructor(private service: ProduitService,private alertController: AlertController) { }
   slideOpts = {
     initialSlide: 1,
     speed: 400,
@@ -36,9 +37,24 @@ export class CataloguePage implements OnInit {
       }
       else
       {this.catalogue=data.getAll;}
-      
-
    })
-   console.log()
   }
+
+  //alert
+  /* async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Filtrer par prix',
+      inputs:[
+        {
+          type: "range",
+          min: 1000,
+          max: 30000,
+        }
+      ],
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  } */
+
 }
