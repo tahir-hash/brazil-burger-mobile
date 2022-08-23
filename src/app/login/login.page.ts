@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import { Login } from '../Shared/models/Auth';
 import { Role } from '../Shared/models/Role';
@@ -16,7 +17,7 @@ export class LoginPage implements OnInit {
   pathImage=environment.pathImage
   form:FormGroup
 
-  constructor(private fb: FormBuilder,private auth: AuthService, private router: Router ,private token: TokenService) { }
+  constructor(public toastController: ToastController,private fb: FormBuilder,private auth: AuthService, private router: Router ,private token: TokenService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -34,11 +35,34 @@ export class LoginPage implements OnInit {
         localStorage.setItem('userId', data.id)
         this.router.navigateByUrl('/catalogue');
         //location.reload();
+        this.toastLogin()
       },
       err => {
         console.log(err);
+        this.toastLogin('ok')
+
       }
     )
     console.log(this.form.value)
+  }
+
+  async toastLogin(error?:string) {
+    if(error){
+      const toast = await this.toastController.create({
+        message: 'Erreur de connexion',
+        duration: 4000,
+        color: "danger"
+      });
+      toast.present();
+    }
+    else{
+      const toast = await this.toastController.create({
+      message: 'Connexion Reussie',
+      duration: 4000,
+      color: "dark"
+    });
+    toast.present();
+    }
+    
   }
 }
