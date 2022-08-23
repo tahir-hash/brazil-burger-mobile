@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://tahirbrazilburger.herokuapp.com/api'
+  apiUrl: 'https://tahirbrazilburger.herokuapp.com/api',
+  pathImage: 'assets/images/'
 };
 
 /*

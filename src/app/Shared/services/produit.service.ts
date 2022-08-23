@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
 import {map}  from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Catalogue } from './models/catalogue';
+import { Catalogue } from '../models/catalogue';
 const apiUrl=environment.apiUrl;
 @Injectable({
   providedIn: 'root'
