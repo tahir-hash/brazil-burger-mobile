@@ -17,7 +17,8 @@ export class LoginPage implements OnInit {
   pathImage=environment.pathImage
   form:FormGroup
 
-  constructor(public toastController: ToastController,private fb: FormBuilder,private auth: AuthService, private router: Router ,private token: TokenService) { }
+  constructor(
+    public toastController: ToastController,private fb: FormBuilder,private auth: AuthService, private router: Router ,private token: TokenService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -31,14 +32,16 @@ export class LoginPage implements OnInit {
   submitData() {
     this.auth.login(this.form.value).subscribe(
       data => {
-        this.token.saveToken(data.token);
-        localStorage.setItem('userId', data.id)
-        this.router.navigateByUrl('/catalogue');
-        //location.reload();
+        this.token.saveToken('token',data.token);
+        this.token.saveToken('userId',data.id);
+        this.router.navigateByUrl('/catalogue')
+       //console.log(this.token.getData('token'))
+       this.token.loggedState.next(true)
         this.toastLogin()
       },
       err => {
         console.log(err);
+        this.token.loggedState.next(false)
         this.toastLogin('ok')
 
       }

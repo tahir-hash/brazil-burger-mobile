@@ -7,7 +7,8 @@ import { TokenService } from './Shared/services/token.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(){}
+  constructor(private tokenServ: TokenService){
+  }
   
-
+  
 }

@@ -7,14 +7,22 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoaderComponent } from './loader/loader.component';
 import { TabComponent } from './tab/tab.component';
 import { MenuWrapperComponent } from './menu-wrapper/menu-wrapper.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
-  declarations: [AppComponent,TabComponent,MenuWrapperComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,RouterModule],
+  declarations: [AppComponent, TabComponent, MenuWrapperComponent],
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
+    IonicStorageModule.forRoot({
+      name: 'brazil-burger'
+    })
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

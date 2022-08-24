@@ -13,8 +13,10 @@ export class MenuWrapperComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLogged = this.token.isConnect();
-    console.log(this.isLogged);
+    /* this.token.getLoggedState().subscribe(data=>{
+      this.isLogged =data
+     }); */
+     this.isLogged=false
   }
  
   logOut(){

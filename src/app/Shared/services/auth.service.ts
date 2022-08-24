@@ -18,8 +18,6 @@ export class AuthService {
 
   }
 
-
-
   login(form: Login) {
     return this.http.post<any>(this.urlLogin, form)
   }
