@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommandeService } from '../Shared/services/commande.service';
 import { TokenService } from '../Shared/services/token.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-details-cmd',
@@ -10,6 +11,9 @@ import { TokenService } from '../Shared/services/token.service';
 })
 export class DetailsCmdPage implements OnInit {
   all:any[]
+  montant:number
+  pathImage=environment.pathImage
+
   constructor(private commandeServ:CommandeService,private token:TokenService,private route:ActivatedRoute) { }
 
   async ngOnInit() {
@@ -22,7 +26,9 @@ export class DetailsCmdPage implements OnInit {
       if(data.burgerCommandes && data.menuCommandes && data.boissonTailleCommandes && data.portionFriteCommandes){
         this.all=[...data.burgerCommandes,...data.menuCommandes,...data.boissonTailleCommandes,...data.portionFriteCommandes]; 
       }
-      console.log(this.all);
+      this.montant=data.montant;
+      console.log(data)
+      //console.log(this.all);
     })
   }
 

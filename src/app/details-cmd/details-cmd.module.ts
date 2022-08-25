@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetailsCmdPageRoutingModule } from './details-cmd-routing.module';
 
 import { DetailsCmdPage } from './details-cmd.page';
+import { LoaderComponent } from '../loader/loader.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { DetailsCmdPage } from './details-cmd.page';
     IonicModule,
     DetailsCmdPageRoutingModule
   ],
-  declarations: [DetailsCmdPage]
+  declarations: [DetailsCmdPage,LoaderComponent]
 })
 export class DetailsCmdPageModule {}

@@ -20,6 +20,7 @@
       <ion-label>{{annulee}}</ion-label>
     </ion-segment-button>
   </ion-segment>
+  
   <ion-input [(ngModel)]="selectDate" type="date"></ion-input>
 
   <ion-item-divider></ion-item-divider>
@@ -30,7 +31,7 @@
         <ion-label style="font-weight: bold">{{item. montant}}</ion-label>
         <ion-label style="color: #d4401f">{{item.etat}}</ion-label>
       </ion-grid>
-      <ion-label *ngIf="item.etat==enCours">
+      <ion-label *ngIf="item.etat==enCours" slide="end">
         <ion-button  (click)="changeState(annulee,item.id)" color="white"
           ><ion-icon color="danger" name="ban-outline"></ion-icon>
         </ion-button>
