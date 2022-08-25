@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
+import { Role } from '../models/Role';
+import jwt_decode from "jwt-decode";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,32 +24,29 @@ export class TokenService {
    return this.storage.set(key,token);
   }
 
-  /* isConnect(){
-    var token=null
-   this.getData('token').then(data=>{
-         token=data 
-         if (token != null) {
-       this.connect = true
-    }
-    else{
-      this.connect = false
-    }
-    console.log("mbacke "+token);
-    console.log("tahir "+this.connect);
-    return this.connect
-    })
-  } */
 
-  isConnect(isLogged:boolean){
-    this.getData('token').then((data) => {
-      if(data!=null){
-       return isLogged=true
-      }
-      else{
-     return  isLogged=false
-      }
-     //console.log(isLogged);
-   })
+
+   isConnect(token:any){
+    if(token != null){
+      return true;
+    }
+    return false
+  }
+
+  isClient(token:any){
+    let jwt_decoded:any=jwt_decode(token)
+    if(jwt_decoded!=null && jwt_decoded.roles[0]==Role.client){
+      return true
+    }
+    return false
+  }
+
+  isLivreur(token:any){
+    let jwt_decoded:any=jwt_decode(token)
+    if(jwt_decoded.roles[0]==Role.livreur){
+      return true
+    }
+    return false
   }
 
   async logOut(){

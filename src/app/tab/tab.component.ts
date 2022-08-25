@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TokenService } from '../Shared/services/token.service';
 
 @Component({
@@ -8,15 +8,13 @@ import { TokenService } from '../Shared/services/token.service';
 })
 export class TabComponent implements OnInit {
   isLogged: any
+
   @Output() loggedChanged: EventEmitter<any> = new EventEmitter();
   constructor(private token: TokenService) {
   }
 
-  ngOnInit() {
-    /* this.token.getLoggedState().subscribe(data=>{
-     this.isLogged =data
-     this.loggedChanged.emit(data);
-    }); */
+ async ngOnInit() {
+  
     this.token.getData('token').then((data) => {
       if (data != null) {
         this.isLogged = true
@@ -24,9 +22,8 @@ export class TabComponent implements OnInit {
       else {
         this.isLogged = false
       }
-      console.log(this.isLogged);
+      //console.log(this.isLogged);
     })
-    //this.token.isConnect(this.isLogged)
   }
   logOut() {
     this.token.logOut();

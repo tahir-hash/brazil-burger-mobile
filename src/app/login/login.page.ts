@@ -34,11 +34,14 @@ export class LoginPage implements OnInit {
       data => {
         this.token.saveToken('token',data.token);
         this.token.saveToken('userId',data.id).then(()=>{
-          window.location.reload();
+         window.location.reload();
         });
-        
-        this.router.navigateByUrl('/catalogue')
-        //console.log("mbacke "+this.token.getData('token')
+        if(this.token.isClient(data.token)){
+          this.router.navigateByUrl('/catalogue')
+        }
+        if(this.token.isLivreur(data.token)){
+          this.router.navigateByUrl('/livreur')
+        }
         this.toastLogin()
       },
       err => {

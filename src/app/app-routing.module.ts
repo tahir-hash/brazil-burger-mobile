@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'details-cmd/:id',
     loadChildren: () => import('./details-cmd/details-cmd.module').then( m => m.DetailsCmdPageModule)
+  },
+  {
+    path: 'livreur',
+    loadChildren: () => import('./livreur/livreur.module').then( m => m.LivreurPageModule)
   }
 ];
 

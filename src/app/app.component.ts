@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {  Router } from '@angular/router';
 import { TokenService } from './Shared/services/token.service';
 
 @Component({
@@ -7,9 +8,8 @@ import { TokenService } from './Shared/services/token.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private tokenServ: TokenService){
+  constructor(private tokenServ: TokenService,private router:Router) {
   }
-  
-   token= this.tokenServ.getData('token')
+   url=this.router.url
   
 }
