@@ -10,5 +10,6 @@ export class AppComponent {
   constructor(private tokenServ: TokenService){
   }
   
+   token= this.tokenServ.getData('token')
   
 }

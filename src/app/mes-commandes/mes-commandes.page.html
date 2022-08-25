@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>mes-commandes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngFor="let item of own">
+     <ion-item button detail>
+    <ion-label>
+     {{item.dateCmd | date: "medium"}} <br>
+     {{item. montant}} <br>
+     {{item.etat}}
+    </ion-label> 
+    <ion-label>
+      <ion-button>ANNULEE</ion-button>
+    </ion-label> 
+  </ion-item>
+  </ng-container>
+ 
+</ion-content>

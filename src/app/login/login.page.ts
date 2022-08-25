@@ -33,15 +33,16 @@ export class LoginPage implements OnInit {
     this.auth.login(this.form.value).subscribe(
       data => {
         this.token.saveToken('token',data.token);
-        this.token.saveToken('userId',data.id);
+        this.token.saveToken('userId',data.id).then(()=>{
+          window.location.reload();
+        });
+        
         this.router.navigateByUrl('/catalogue')
-       //console.log(this.token.getData('token'))
-       this.token.loggedState.next(true)
+        //console.log("mbacke "+this.token.getData('token')
         this.toastLogin()
       },
       err => {
         console.log(err);
-        this.token.loggedState.next(false)
         this.toastLogin('ok')
 
       }

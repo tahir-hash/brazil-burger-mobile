@@ -8,3 +8,8 @@ export interface Token {
    token:string,
    id:any
 }
+
+export interface storageSet {
+    key:string,
+    value:any
+ }

@@ -16,7 +16,17 @@ export class MenuWrapperComponent implements OnInit {
     /* this.token.getLoggedState().subscribe(data=>{
       this.isLogged =data
      }); */
-     this.isLogged=false
+     this.token.getData('token').then((data) => {
+      if(data!=null){
+       this.isLogged=true
+      }
+      else{
+       this.isLogged=false
+      }
+     console.log(this.isLogged);
+   })
+
+   console.log(this.token.getData('token'))
   }
  
   logOut(){

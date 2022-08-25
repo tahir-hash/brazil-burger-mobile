@@ -7,17 +7,9 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class TokenService {
   connect:boolean=false
-  loggedState = new BehaviorSubject<boolean>(false);
-
-  getLoggedState(){
-    return this.loggedState.asObservable();
-  }
+  
   constructor(private router:Router, private storage: Storage) {
-    this.init()
-    const ls = JSON.parse(localStorage.getItem('cart') || 'null')
-    if (ls) {
-      this.loggedState.next(ls)
-    }
+    this.init()   
    }
   
 
@@ -29,15 +21,32 @@ export class TokenService {
    return this.storage.set(key,token);
   }
 
-  isConnect():boolean{
+  /* isConnect(){
     var token=null
-    this.getData('token').then(data=>{
-      token = data
-    })
-    if (token != null) {
-      return this.connect = true
+   this.getData('token').then(data=>{
+         token=data 
+         if (token != null) {
+       this.connect = true
     }
+    else{
+      this.connect = false
+    }
+    console.log("mbacke "+token);
+    console.log("tahir "+this.connect);
     return this.connect
+    })
+  } */
+
+  isConnect(isLogged:boolean){
+    this.getData('token').then((data) => {
+      if(data!=null){
+       return isLogged=true
+      }
+      else{
+     return  isLogged=false
+      }
+     //console.log(isLogged);
+   })
   }
 
   logOut(){
@@ -52,8 +61,11 @@ export class TokenService {
   }
   async getData(key:string){
     return await this.storage.get(key).then((val)=>{
-      console.log("promess"+val);
       return val
     });
   }
 }
+function resolve(data: any) {
+  throw new Error('Function not implemented.');
+}
+
