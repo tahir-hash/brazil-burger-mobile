@@ -31,7 +31,7 @@ export class MenuWrapperComponent implements OnInit {
  
   logOut(){
     this.token.logOut();
-    this.router.navigateByUrl('/catalogue');
+    //this.router.navigateByUrl('/catalogue');
   }
 
 }

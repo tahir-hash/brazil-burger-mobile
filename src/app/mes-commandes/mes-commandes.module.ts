@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { MesCommandesPageRoutingModule } from './mes-commandes-routing.module';
 
 import { MesCommandesPage } from './mes-commandes.page';
+import { FilterCmdPipe } from '../Pipe/filter-cmd.pipe';
+import { FilterDatePipe } from '../Pipe/filter-date.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MesCommandesPageRoutingModule
+    MesCommandesPageRoutingModule,
+    
   ],
-  declarations: [MesCommandesPage]
+  declarations: [MesCommandesPage,FilterCmdPipe,FilterDatePipe]
 })
 export class MesCommandesPageModule {}

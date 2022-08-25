@@ -18,15 +18,18 @@ export class TabComponent implements OnInit {
      this.loggedChanged.emit(data);
     }); */
     this.token.getData('token').then((data) => {
-       if(data!=null){
-        this.isLogged=true
-       }
-       else{
-        this.isLogged=false
-       }
+      if (data != null) {
+        this.isLogged = true
+      }
+      else {
+        this.isLogged = false
+      }
       console.log(this.isLogged);
     })
     //this.token.isConnect(this.isLogged)
   }
-
+  logOut() {
+    this.token.logOut();
+    //this.router.navigateByUrl('/catalogue');
+  }
 }

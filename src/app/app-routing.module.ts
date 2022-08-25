@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'mes-commandes',
     loadChildren: () => import('./mes-commandes/mes-commandes.module').then( m => m.MesCommandesPageModule)
+  },
+  {
+    path: 'details-cmd/:id',
+    loadChildren: () => import('./details-cmd/details-cmd.module').then( m => m.DetailsCmdPageModule)
   }
 ];
 

@@ -28,12 +28,12 @@ export class CommandeService {
     return this.http.post<any>(this.urlCmd, JSON.stringify(obj), headersOptions)
   }
 
-  getOwnCommande(id:number) {
+  getOwnCommande(id:number,token) {
   const urlCmdOwn = `https://tahirbrazilburger.herokuapp.com/api/clients/${id}/commandes`;
     const headersOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.token.getData('token').then(data => {return data})}`
+        'Authorization': `Bearer ${token}`
       })
     }
     console.log(headersOptions)
@@ -58,11 +58,11 @@ export class CommandeService {
     )
   }
 
-  stateChange(etat: any, id: number) {
+  stateChange(etat: any, id: number,token?:string) {
     const headersOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.token.getToken()}`
+        'Authorization': `Bearer ${token}`
       })
     }
     const state = {
@@ -99,5 +99,16 @@ export class CommandeService {
         return data['hydra:member']
       })
     )
+  }
+
+
+  one$=(id:any,token:string)=>{
+    const headersOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    }
+    return this.http.get<any>(`${this.urlCmd}/${id}`,headersOptions)
   }
 }

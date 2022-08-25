@@ -1,21 +1,40 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="ion-header">
     <ion-title>mes-commandes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button  menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ng-container *ngFor="let item of own">
-     <ion-item button detail>
-    <ion-label>
-     {{item.dateCmd | date: "medium"}} <br>
-     {{item. montant}} <br>
-     {{item.etat}}
-    </ion-label> 
-    <ion-label>
-      <ion-button>ANNULEE</ion-button>
-    </ion-label> 
-  </ion-item>
+  <h1>Mes commandes</h1>
+  <ion-segment [(ngModel)]="selectedValue">
+    <ion-segment-button value="{{enCours}}">
+      <ion-label>{{enCours}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="{{validee}}">
+      <ion-label>{{validee}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="{{annulee}}">
+      <ion-label>{{annulee}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-input [(ngModel)]="selectDate" type="date"></ion-input>
+
+  <ion-item-divider></ion-item-divider>
+  <ng-container *ngFor="let item of own | filterCmd: selectedValue | filterDate:selectDate">
+    <ion-item class="grid" button detail routerLink="/details-cmd/{{item.id}}">
+      <ion-grid class="item">
+        <ion-label> {{item.dateCmd | date:"mediumDate" }} </ion-label>
+        <ion-label style="font-weight: bold">{{item. montant}}</ion-label>
+        <ion-label style="color: #d4401f">{{item.etat}}</ion-label>
+      </ion-grid>
+      <ion-label *ngIf="item.etat==enCours">
+        <ion-button  (click)="changeState(annulee,item.id)" color="white"
+          ><ion-icon color="danger" name="ban-outline"></ion-icon>
+        </ion-button>
+      </ion-label>
+    </ion-item>
   </ng-container>
- 
 </ion-content>

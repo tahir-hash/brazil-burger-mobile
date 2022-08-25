@@ -12,5 +12,13 @@
       <ion-icon name="cart-sharp"></ion-icon>
       <ion-label>Mon panier</ion-label>
     </ion-tab-button>
+    <ion-tab-button tab="login" *ngIf="isLogged==false">
+      <ion-icon name="log-in"></ion-icon>
+      <ion-label>Connexion</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="logOut()" *ngIf="isLogged==true" >
+      <ion-icon name="log-out"></ion-icon>
+      <ion-label>Deconnexion</ion-label>
+    </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

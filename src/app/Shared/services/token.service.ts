@@ -49,9 +49,11 @@ export class TokenService {
    })
   }
 
-  logOut(){
-    this.storage.clear()
-    this.router.navigate(['/catalogue']);
+  async logOut(){
+    await this.storage.clear()
+    this.router.navigate(['/catalogue']).then(()=>{
+      location.reload()
+    })
   }
 
   async init(){
