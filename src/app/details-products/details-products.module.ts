@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetailsProductsPageRoutingModule } from './details-products-routing.module';
 
 import { DetailsProductsPage } from './details-products.page';
+import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { DetailsProductsPage } from './details-products.page';
     FormsModule,
     IonicModule,
     DetailsProductsPageRoutingModule,
+    IonicHeaderParallaxModule
   ],
-  declarations: [DetailsProductsPage]
+  declarations: [DetailsProductsPage],
 })
 export class DetailsProductsPageModule {}

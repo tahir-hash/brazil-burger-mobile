@@ -13,14 +13,15 @@ export class DetailsProductsPage implements OnInit {
 
   constructor(private produitService: ProduitService, public route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-   
+  async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
     
     this.produitService.one$(id).subscribe(data => {
       this.produit = data
-      console.log(data); 
+      
     })
   }
 
+  
 }
+

@@ -14,7 +14,7 @@ import { LoaderComponent } from '../loader/loader.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailsCmdPageRoutingModule
+    DetailsCmdPageRoutingModule,
   ],
   declarations: [DetailsCmdPage,LoaderComponent]
 })

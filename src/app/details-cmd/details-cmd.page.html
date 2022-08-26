@@ -13,76 +13,115 @@
 </ng-container>
 <ng-container *ngIf="all!=undefined">
   <ion-content>
-  <ion-list>
-    <ion-list-header> Total Commande: <span style="color:  #D4401F;"> {{montant}}</span> </ion-list-header>
-    <ng-container *ngFor="let product of all">
-      <!-- burger -->
-      <ng-container *ngIf="product.burger">
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="data:image/png;base64,{{ product.burger.image }}" />
-          </ion-avatar>
-          <ion-label>
-            <h2>{{product.burger.nom}}</h2>
-            <h2>{{product.burger.prix}} PU</h2>
-            <h2>{{product.quantite}}</h2>
-            <h2>{{product.prix}}</h2>
-          </ion-label>
-        </ion-item>
-      </ng-container>
-      <!-- menu -->
-      <ng-container *ngIf="product.menu">
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="data:image/png;base64,{{ product.menu.image }}" />
-          </ion-avatar>
-          <ion-label>
-            <h2>{{product.menu.nom}}</h2>
-            <h2>{{product.menu.prix}} PU</h2>
-            <h2>{{product.quantite}}</h2>
-            <h2>{{product.prix}}</h2>
-          </ion-label>
-        </ion-item>
-      </ng-container>
-      <!-- boisson taille -->
-      <ng-container *ngIf="product.boissonTaille">
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src= "{{pathImage}}juice/{{
+    <ion-list>
+      <ion-list-header>
+        Total Commande: <span style="color: #d4401f"> {{montant}}</span>
+      </ion-list-header>
+      <ng-container *ngFor="let product of all">
+        <!-- burger -->
+        <ng-container *ngIf="product.burger">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="data:image/png;base64,{{ product.burger.image }}" />
+            </ion-avatar>
+            <ion-grid>
+              <ion-label
+                ><h2 class="myColor">{{product.burger.nom}}</h2></ion-label
+              >
+              <ion-item lines="none">
+                <ion-label
+                  ><h3>
+                    {{product.burger.prix}} * {{product.quantite}}
+                  </h3></ion-label
+                >
+                <ion-label
+                  ><h3 class="myColor">{{product.prix}} FCFA</h3></ion-label
+                >
+              </ion-item>
+            </ion-grid>
+          </ion-item>
+        </ng-container>
+        <!-- menu -->
+        <ng-container *ngIf="product.menu">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="data:image/png;base64,{{ product.menu.image }}" />
+            </ion-avatar>
+            <ion-grid>
+              <ion-label
+                ><h2 class="myColor">{{product.menu.nom}}</h2></ion-label
+              >
+              <ion-item class="items" lines="none">
+                <ion-label
+                  ><h3>
+                    {{product.menu.prix}} * {{product.quantite}}
+                  </h3></ion-label
+                >
+                <ion-label
+                  ><h3 class="myColor">{{product.prix}} FCFA</h3></ion-label
+                >
+              </ion-item>
+            </ion-grid>
+           
+          </ion-item>
+        </ng-container>
+        <!-- boisson taille -->
+        <ng-container *ngIf="product.boissonTaille">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img
+                src="{{pathImage}}juice/{{
               product.boissonTaille.boisson.nom | lowercase
-            }}.png" />
-          </ion-avatar>
-         
-          <ion-label>
-            <h2>
-              {{product.boissonTaille.boisson.nom}}-{{product.boissonTaille.taille.libelle
-              | lowercase}}
-            </h2>
-            <h2>{{product.boissonTaille.taille.prix}} PU</h2>
-            <h2>{{product.quantite}}</h2>
-            <h2>{{product.prix}}</h2>
-          </ion-label>
-        </ion-item>
-      </ng-container>
-      <!-- portion frite -->
-      <ng-container *ngIf="product.portionFrite">
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src= "{{pathImage}}frites/{{
+            }}.png"
+              />
+            </ion-avatar>
+            <ion-grid>
+              <ion-label
+                ><h2 class="myColor">{{product.boissonTaille.boisson.nom}}-{{product.boissonTaille.taille.libelle
+                  | lowercase}}</h2></ion-label
+              >
+              <ion-item class="items" lines="none">
+                <ion-label
+                  ><h3>
+                    {{product.boissonTaille.taille.prix}} * {{product.quantite}}
+                  </h3></ion-label
+                >
+                <ion-label
+                  ><h3 class="myColor">{{product.prix}} FCFA</h3></ion-label
+                >
+              </ion-item>
+            </ion-grid>
+          </ion-item>
+        </ng-container>
+        <!-- portion frite -->
+        <ng-container *ngIf="product.portionFrite">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img
+                src="{{pathImage}}frites/{{
               product.portionFrite.nom | lowercase
-            }}.png" />
-          </ion-avatar>
-          <ion-label>
-            <h2>
-              {{product.portionFrite.nom}} </h2>
-              <h2>{{product.portionFrite.prix}} PU</h2>
-            <h2>{{product.quantite}}</h2>
-            <h2>{{product.prix}}</h2>
-          </ion-label>
-        </ion-item>
+            }}.png"
+              />
+            </ion-avatar>
+            <ion-grid>
+              <ion-label
+                ><h2 class="myColor">{{product.portionFrite.nom}}</h2></ion-label
+              >
+              <ion-item class="items" lines="none">
+                <ion-label
+                  ><h3>
+                    {{product.portionFrite.prix}} * {{product.quantite}}
+                  </h3></ion-label
+                >
+                <ion-label
+                  ><h3 class="myColor">{{product.prix}} FCFA</h3></ion-label
+                >
+              </ion-item>
+            </ion-grid>
+          
+          </ion-item>
+        </ng-container>
       </ng-container>
-    </ng-container>
-  </ion-list>
-</ion-content>
+    </ion-list>
+  </ion-content>
 </ng-container>
-
