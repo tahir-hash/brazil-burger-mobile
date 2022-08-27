@@ -1,7 +1,7 @@
 <ion-header
     parallax 
-    [imageUrl] ="produit?.burger.image"
-   height ="200"
+    imageUrl ="data:image/png;base64,{{produit?.burger.image}}"
+   height ="500"
    bgPosition ="top"
 >
   <ion-toolbar>
@@ -15,12 +15,6 @@
 <ion-content class="ion-text-justify">
 <ng-container *ngIf="produit!=undefined">
   <ng-container *ngIf="produit.burger">
-      <img
-        class="img-details mx-auto mt-2"
-        src="data:image/png;base64,{{produit?.burger.image}}"
-        width="350"
-        height="300"
-      />
       <div class="info-sub">
         <ion-card-title style="color: #d4401f; margin-right: 27%"
           >{{produit?.burger.nom|uppercase}}</ion-card-title

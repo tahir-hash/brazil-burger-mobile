@@ -8,7 +8,8 @@ import { TokenService } from '../Shared/services/token.service';
 })
 export class TabComponent implements OnInit {
   isLogged: any
-
+  isclient:any
+  islivreur:any
   @Output() loggedChanged: EventEmitter<any> = new EventEmitter();
   constructor(private token: TokenService) {
   }
@@ -18,12 +19,15 @@ export class TabComponent implements OnInit {
     this.token.getData('token').then((data) => {
       if (data != null) {
         this.isLogged = true
+        this.isclient= this.token.isClient(data)
+        this.islivreur= this.token.isLivreur(data)
       }
       else {
         this.isLogged = false
       }
       //console.log(this.isLogged);
     })
+
   }
   logOut() {
     this.token.logOut();

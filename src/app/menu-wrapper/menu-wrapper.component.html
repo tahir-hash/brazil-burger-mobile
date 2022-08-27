@@ -6,6 +6,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
+     <ng-container *ngIf="isclient">
       <ion-menu-toggle>
         <ion-item routerLink="catalogue">
           <ion-icon name="home"></ion-icon>
@@ -24,6 +25,15 @@
           <ion-label>Mon panier</ion-label>
         </ion-item>
       </ion-menu-toggle>
+     </ng-container>
+     <ng-container *ngIf="islivreur">
+         <ion-menu-toggle>
+        <ion-item routerLink="livreur">
+          <ion-icon name="car-outline"></ion-icon>
+          <ion-label>Livraison</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+     </ng-container>
       <ion-menu-toggle>
         <ion-item routerLink="login" *ngIf="isLogged == false">
           <ion-icon name="log-in"></ion-icon>

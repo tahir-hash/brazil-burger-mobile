@@ -9,6 +9,8 @@ import { TokenService } from '../Shared/services/token.service';
 })
 export class MenuWrapperComponent implements OnInit {
   isLogged:boolean
+  isclient:any
+  islivreur:any
   constructor(private token:TokenService, private router:Router) {
   }
 
@@ -19,6 +21,8 @@ export class MenuWrapperComponent implements OnInit {
      this.token.getData('token').then((data) => {
       if(data!=null){
        this.isLogged=true
+       this.isclient= this.token.isClient(data)
+        this.islivreur= this.token.isLivreur(data)
       }
       else{
        this.isLogged=false

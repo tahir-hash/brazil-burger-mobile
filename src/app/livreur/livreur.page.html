@@ -1,9 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>livreur</ion-title>
+  <ion-toolbar class="ion-header">
+    <ion-title>Livreur</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button  menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+ <ng-container *ngIf="livraison==undefined">
+  <app-loader></app-loader>
+  </ng-container>
+ <ng-container *ngIf="livraison!=undefined">
+  <ng-container *ngFor="let livr of livraison">
+    <h1>Commandes à livrer</h1>
+  <ng-container *ngFor="let item of livr.commandes">
+    <ion-item  button detail>
+      <ion-label>
+        <strong>{{item.client.prenom |uppercase}} {{item.client.nom |uppercase}} </strong><br>
+        <strong>{{item.telClient}}</strong><br>
+        <p>{{item.zone.libelle}}</p>
+        <strong>{{item.montant - item.zone.prix}}</strong> <br>
+        <strong>{{item.zone.prix}} livraison</strong>
+        <h1 class="myColor">{{item.montant}}</h1>
+      </ion-label>
+  </ion-item>
+  </ng-container>
+  </ng-container>
+  
+</ng-container >
 
 </ion-content>

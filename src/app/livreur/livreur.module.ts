@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { LivreurPageRoutingModule } from './livreur-routing.module';
 
 import { LivreurPage } from './livreur.page';
+import { LoaderComponent } from '../loader/loader.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { LivreurPage } from './livreur.page';
     IonicModule,
     LivreurPageRoutingModule
   ],
-  declarations: [LivreurPage]
+  declarations: [LivreurPage,LoaderComponent]
 })
 export class LivreurPageModule {}
