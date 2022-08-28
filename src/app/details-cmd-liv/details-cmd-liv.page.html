@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="livreur"></ion-back-button>
+    </ion-buttons>
+    <ion-title>details-cmd-liv</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="myColor ion-text-center">SCANNER POUR VALIDER LA COMMANDE</h3>
+  <div class="center" *ngIf="textShow">
+    <qrcode  [qrdata]="textShow" [width]="256"  [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+</ion-content>

@@ -15,7 +15,7 @@
   <ng-container *ngFor="let livr of livraison">
     <h1>Commandes à livrer</h1>
   <ng-container *ngFor="let item of livr.commandes">
-    <ion-item  button detail>
+    <ion-item  button detail routerLink="/details-liv/{{item.id}}">
       <ion-label>
         <strong>{{item.client.prenom |uppercase}} {{item.client.nom |uppercase}} </strong><br>
         <strong>{{item.telClient}}</strong><br>
