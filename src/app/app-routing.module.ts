@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'details-liv/:id',
     loadChildren: () => import('./details-cmd-liv/details-cmd-liv.module').then( m => m.DetailsCmdLivPageModule)
+  },
+  {
+    path: 'panier',
+    loadChildren: () => import('./panier/panier.module').then( m => m.PanierPageModule)
   }
 ];
 

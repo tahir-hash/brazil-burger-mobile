@@ -8,6 +8,7 @@ import { DetailsProductsPageRoutingModule } from './details-products-routing.mod
 
 import { DetailsProductsPage } from './details-products.page';
 import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
+import { CountComponent } from './components/count/count.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
     DetailsProductsPageRoutingModule,
     IonicHeaderParallaxModule
   ],
-  declarations: [DetailsProductsPage],
+  declarations: [DetailsProductsPage,CountComponent],
 })
 export class DetailsProductsPageModule {}

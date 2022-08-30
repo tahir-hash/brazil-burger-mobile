@@ -29,9 +29,21 @@
 /* *{
     font-family: 'Roboto', sans-serif;
 } */
-.tahir-button{
+.tahir-button,ion-toolbar{
     --background: #D4401F
 }
-ion-menu-button,ion-back-button,.myColor{
+.myColor{
     color:#D4401F
 }
+ion-menu-button,ion-back-button,ion-title{
+    color: white;
+}
+ion-title{
+    text-transform: uppercase;
+}
+
+.ion-badge{
+    --background: black;
+}
+
+

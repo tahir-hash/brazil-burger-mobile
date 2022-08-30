@@ -1,14 +1,14 @@
 <ion-header
     parallax 
-    imageUrl ="data:image/png;base64,{{produit?.burger.image}}"
-   height ="500"
+    imageUrl ="data:image/png;base64,{{image}}"
+   height ="300"
    bgPosition ="top"
 >
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="catalogue"></ion-back-button>
     </ion-buttons>
-    <ion-title>Details produits</ion-title>
+    <ion-title>DETAILS PRODUIT</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,8 +20,9 @@
           >{{produit?.burger.nom|uppercase}}</ion-card-title
         >
         <ion-card-subtitle>{{produit?.burger.prix}} FCFA</ion-card-subtitle>
+        <app-count (count)="valueCount($event)"></app-count>
         <ng-container class="ion-text-center">
-          <ion-button class="tahir-button">J'achete</ion-button>
+          <ion-button class="tahir-button" (click)="addToCart(produit?.burger)">J'achete</ion-button>
         </ng-container>
         <div class="describe mt-5 d-flex justify-content-around">
           <ion-text>
@@ -31,20 +32,14 @@
       </div>
   </ng-container>
   <ng-container *ngIf="produit.menu">
-   
-      <img
-        class="img-details mx-auto mt-2"
-        src="data:image/png;base64,{{produit?.menu.image}}"
-        width="350"
-        height="300"
-      />
       <div class="info-sub">
         <ion-card-title style="color: #d4401f; margin-right: 27%"
           >{{produit?.menu.nom|uppercase}}</ion-card-title
         >
         <ion-card-subtitle>{{produit?.menu.prix}} FCFA</ion-card-subtitle>
+        <app-count (count)="valueCount($event)"></app-count>
         <ng-container class="ion-text-center">
-          <ion-button class="tahir-button">J'achete</ion-button>
+          <ion-button (click)="addToCart(produit.menu)" class="tahir-button">J'achete</ion-button>
         </ng-container>
         <div class="describe mt-5 d-flex justify-content-around">
           <ion-text>

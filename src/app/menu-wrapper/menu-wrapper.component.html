@@ -1,7 +1,7 @@
 <ion-menu side="start" menuId="mainMenu" contentId="main">
   <ion-header>
     <ion-toolbar class="tahir-button">
-      <ion-title>Menu</ion-title>
+      <ion-title>MENU</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
@@ -20,13 +20,14 @@
           <ion-label>Mes commandes</ion-label>
         </ion-item>
       </ion-menu-toggle>
-      <ion-menu-toggle>
-        <ion-item>
-          <ion-icon name="cart-sharp"></ion-icon>
-          <ion-label>Mon panier</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
      </ng-container>
+     <ion-menu-toggle *ngIf="isclient || isLogged == true || isLogged == false">
+      <ion-item routerLink="panier">
+        <ion-icon name="cart-sharp"></ion-icon>
+        <ion-label>Mon panier</ion-label>
+      <ion-badge class="ion-badge">{{count}}</ion-badge>
+      </ion-item>
+    </ion-menu-toggle>
      <ng-container *ngIf="islivreur">
          <ion-menu-toggle>
         <ion-item routerLink="livreur">

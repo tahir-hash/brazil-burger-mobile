@@ -18,11 +18,11 @@ export class CommandeService {
 
 
 
-  saveCart(obj: Cart) {
+  saveCart(obj: Cart,token:string) {
     const headersOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.token.getToken()}`
+        'Authorization': `Bearer ${token}`
       })
     }
     return this.http.post<any>(this.urlCmd, JSON.stringify(obj), headersOptions)
