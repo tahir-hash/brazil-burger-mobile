@@ -13,11 +13,16 @@
         </ion-item>
       </ion-menu-toggle>
      <ng-container *ngIf="isclient">
-      
       <ion-menu-toggle>
         <ion-item routerLink="mes-commandes" *ngIf="isLogged == true">
           <ion-icon name="pricetags-sharp"></ion-icon>
           <ion-label>Mes commandes</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item routerLink="scan" *ngIf="isLogged == true">
+          <ion-icon name="qr-code"></ion-icon>
+          <ion-label>Scan</ion-label>
         </ion-item>
       </ion-menu-toggle>
      </ng-container>

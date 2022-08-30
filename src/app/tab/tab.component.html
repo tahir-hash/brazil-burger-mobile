@@ -9,6 +9,10 @@
         <ion-icon name="pricetags-sharp"></ion-icon>
         <ion-label>Mes commandes</ion-label>
       </ion-tab-button>
+      <ion-tab-button tab="scan" *ngIf="isLogged == true">
+        <ion-icon name="qr-code"></ion-icon>
+        <ion-label>Scan</ion-label>
+      </ion-tab-button>
     </ng-container>
     <ion-tab-button tab="panier" *ngIf="isclient || isLogged == true || isLogged == false">
       <ion-icon name="cart-sharp"></ion-icon>
