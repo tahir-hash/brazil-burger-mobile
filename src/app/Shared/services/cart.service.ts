@@ -204,10 +204,10 @@ export class CartService{
           this.Panier.value.burgerCommandes?.splice(i, 1)
         }
       })
-      this.token.saveToken('cart',JSON.stringify({
+      this.token.saveToken('cart',{
         ...this.Panier.value,
         burgerCommandes: this.Panier.value.burgerCommandes
-      }))
+      })
       return this.Panier.next({
         ...this.Panier.value,
         burgerCommandes: this.Panier.value.burgerCommandes
@@ -219,10 +219,10 @@ export class CartService{
           this.Panier.value.menuCommandes?.splice(i, 1)
         }
       })
-      this.token.saveToken('cart',JSON.stringify({
+      this.token.saveToken('cart',{
         ...this.Panier.value,
         menuCommandes: this.Panier.value.menuCommandes
-      }))
+      })
       return this.Panier.next({
         ...this.Panier.value,
         menuCommandes: this.Panier.value.menuCommandes
@@ -234,10 +234,10 @@ export class CartService{
           this.Panier.value.boissonTailleCommandes?.splice(i, 1)
         }
       })
-      this.token.saveToken('cart',JSON.stringify({
+      this.token.saveToken('cart',{
         ...this.Panier.value,
         boissonTailleCommandes: this.Panier.value.boissonTailleCommandes
-      }))
+      })
       return this.Panier.next({
         ...this.Panier.value,
         boissonTailleCommandes: this.Panier.value.boissonTailleCommandes
@@ -249,10 +249,10 @@ export class CartService{
           this.Panier.value.portionFriteCommandes?.splice(i, 1)
         }
       })
-      this.token.saveToken('cart',JSON.stringify({
+      this.token.saveToken('cart',{
         ...this.Panier.value,
         portionFriteCommandes: this.Panier.value.portionFriteCommandes
-      }))
+      })
       return this.Panier.next({
         ...this.Panier.value,
         portionFriteCommandes: this.Panier.value.portionFriteCommandes
@@ -302,4 +302,5 @@ export class CartService{
 
   }
 
+  
 }

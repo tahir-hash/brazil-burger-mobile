@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BoissonTaille } from '../Shared/models/boisson-taille';
 import { BoissonTailleCommande } from '../Shared/models/boisson-taille-commande';
 import { MenuCommande } from '../Shared/models/menu-commande';
@@ -7,6 +7,7 @@ import { PortionFriteCommande } from '../Shared/models/portion-frite-commande';
 import { Produit } from '../Shared/models/produit';
 import { CartService } from '../Shared/services/cart.service';
 import { ProduitService } from '../Shared/services/produit.service';
+import { ToastService } from '../Shared/services/toast.service';
 
 @Component({
   selector: 'app-details-products',
@@ -20,7 +21,7 @@ export class DetailsProductsPage implements OnInit {
   commandeMenuBoissonTailles:BoissonTaille[] = [];
   tabBoisson:BoissonTailleCommande[]=[]
   tabFries:PortionFriteCommande[]=[]
-  constructor(private produitService: ProduitService, public route: ActivatedRoute,private cart:CartService) { }
+  constructor(private router: Router,private toast:ToastService,private produitService: ProduitService, public route: ActivatedRoute,private cart:CartService) { }
 
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
@@ -47,6 +48,9 @@ export class DetailsProductsPage implements OnInit {
       }
    //console.log('tahir '+obj.burger.id)
       this.cart.addBurger(obj)
+      this.router.navigateByUrl('/catalogue')
+    this.toast.toast('Produit ajouté avec success!!','success',2000)
+
     }
     if(det?.type=='menu'){
       console.log(det)
@@ -62,6 +66,9 @@ export class DetailsProductsPage implements OnInit {
         }
       }
       this.cart.addMenu(obj)
+      this.router.navigateByUrl('/catalogue')
+    this.toast.toast('Produit ajouté avec succés!!','success',2000)
+
     }
    //this.cart.addBoissonTaille(this.tabBoisson)
    //this.cart.addfrites(this.tabFries)
