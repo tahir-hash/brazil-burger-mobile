@@ -11,5 +11,6 @@
   <h3 class="myColor ion-text-center">SCANNER POUR VALIDER LA COMMANDE</h3>
   <div class="center" *ngIf="textShow">
     <qrcode  [qrdata]="textShow" [width]="256"  [errorCorrectionLevel]="'M'"></qrcode>
+    {{textShow}}
   </div>
 </ion-content>

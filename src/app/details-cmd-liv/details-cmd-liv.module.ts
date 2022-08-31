@@ -4,9 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 import { QRCodeModule } from 'angularx-qrcode';
-
 import { DetailsCmdLivPageRoutingModule } from './details-cmd-liv-routing.module';
-
 import { DetailsCmdLivPage } from './details-cmd-liv.page';
 
 @NgModule({
@@ -17,6 +15,7 @@ import { DetailsCmdLivPage } from './details-cmd-liv.page';
     DetailsCmdLivPageRoutingModule,
     QRCodeModule
   ],
-  declarations: [DetailsCmdLivPage]
+  declarations: [DetailsCmdLivPage],
+  providers:[]
 })
 export class DetailsCmdLivPageModule {}

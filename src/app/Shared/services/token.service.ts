@@ -27,7 +27,11 @@ export class TokenService {
 
 
    isConnect(token:any){
-    if(token != null){
+    let date=new Date().getTime()/1000;
+    let jwt_decoded:any=jwt_decode(token)
+    let diff= jwt_decoded - date;
+
+    if(token != null && diff > 0){
       return true;
     }
     return false

@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Login } from '../Shared/models/Auth';
 import { Role } from '../Shared/models/Role';
 import { AuthService } from '../Shared/services/auth.service';
+import { ToastService } from '../Shared/services/toast.service';
 import { TokenService } from '../Shared/services/token.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginPage implements OnInit {
   form:FormGroup
 
   constructor(
-    public toastController: ToastController,private fb: FormBuilder,private auth: AuthService, private router: Router ,private token: TokenService) { }
+    private toast:ToastService,private fb: FormBuilder,private auth: AuthService, private router: Router ,private token: TokenService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -42,34 +43,14 @@ export class LoginPage implements OnInit {
         if(this.token.isLivreur(data.token)){
           this.router.navigateByUrl('/livreur')
         }
-        this.toastLogin()
+        this.toast.toast('Connexion Reussie','dark',4000)
       },
       err => {
         console.log(err);
-        this.toastLogin('ok')
-
+        this.toast.toast('Erreur de connexion','danger',4000)
       }
     )
     console.log(this.form.value)
   }
 
-  async toastLogin(error?:string) {
-    if(error){
-      const toast = await this.toastController.create({
-        message: 'Erreur de connexion',
-        duration: 4000,
-        color: "danger"
-      });
-      toast.present();
-    }
-    else{
-      const toast = await this.toastController.create({
-      message: 'Connexion Reussie',
-      duration: 4000,
-      color: "dark"
-    });
-    toast.present();
-    }
-    
-  }
 }

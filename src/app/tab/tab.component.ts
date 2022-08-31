@@ -29,8 +29,8 @@ export class TabComponent implements OnInit {
         this.isLogged = false
       }
       //console.log(this.isLogged);
+      console.log(this.token.isConnect(data))
     })
-
     this.cart.Panier.subscribe(info=>{
       if(info.burgerCommandes && info.menuCommandes && info.boissonTailleCommandes && info.portionFriteCommandes){
         this.count=info.burgerCommandes?.length + info.menuCommandes?.length + info.portionFriteCommandes?.length + info.boissonTailleCommandes?.length
