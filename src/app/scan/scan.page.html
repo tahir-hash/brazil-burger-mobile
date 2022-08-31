@@ -5,8 +5,5 @@
 </ion-header>
 
 <ion-content>
-  <zxing-scanner [enable]="true" (scanSuccess)="onScanSuccess($event)"></zxing-scanner>
-  <h1>
-    hello: {{result}}
-  </h1>
+  <zxing-scanner [enable]="true" (scanSuccess)="onScanSuccess($event)" previewFitMode="cover"></zxing-scanner>
 </ion-content>

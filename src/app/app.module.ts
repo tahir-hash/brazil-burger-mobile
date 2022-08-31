@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TabComponent } from './tab/tab.component';
 import { MenuWrapperComponent } from './menu-wrapper/menu-wrapper.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { AuthGuard } from './AuthGuard/AuthGuard';
 
 @NgModule({
   declarations: [AppComponent, TabComponent, MenuWrapperComponent],
@@ -21,7 +22,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
       name: 'brazil-burger'
     })
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [AuthGuard,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -31,7 +31,7 @@ export class TokenService {
     let jwt_decoded:any=jwt_decode(token)
     let diff= jwt_decoded - date;
 
-    if(token != null && diff > 0){
+    if(token != null){
       return true;
     }
     return false

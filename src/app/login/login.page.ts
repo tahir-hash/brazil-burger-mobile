@@ -37,11 +37,11 @@ export class LoginPage implements OnInit {
         this.token.saveToken('userId',data.id).then(()=>{
          window.location.reload();
         });
-        if(this.token.isClient(data.token)){
-          this.router.navigateByUrl('/catalogue')
-        }
         if(this.token.isLivreur(data.token)){
           this.router.navigateByUrl('/livreur')
+        }
+        if(this.token.isClient(data.token)){
+          this.router.navigateByUrl('/catalogue')
         }
         this.toast.toast('Connexion Reussie','dark',4000)
       },
