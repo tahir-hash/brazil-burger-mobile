@@ -33,6 +33,7 @@ export class DetailsProductsPage implements OnInit {
       if(this.produit?.menu){
         this.image=this.produit.menu?.image
       }
+     // console.log(this.image)
     })
   }
 

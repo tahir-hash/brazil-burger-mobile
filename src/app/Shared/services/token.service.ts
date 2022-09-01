@@ -59,7 +59,9 @@ export class TokenService {
       location.reload()
     })
   }
-
+  async removeItem(key:string){
+    await this.storage.remove(key);;
+  }
   async init(){
     //console.log('ok');
     await this.storage.create();

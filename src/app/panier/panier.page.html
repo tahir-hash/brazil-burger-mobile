@@ -2,57 +2,106 @@
   <ion-toolbar>
     <ion-title>mon panier</ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button  menu="mainMenu"></ion-menu-button>
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="bg-gray">
-  <ng-container *ngIf="items.all.length<1" >
+  <ng-container *ngIf="items.all.length<1">
     <div class="noitem">
-      <img  src="assets/images/empty-cart.svg" />
+      <img src="assets/images/empty-cart.svg" />
       <h1>Oops!</h1>
     </div>
   </ng-container>
 
-  <ion-list *ngIf="items.all.length>0" >
-    <ion-row class="rrow" *ngFor="let product of items.all;let i = index;" class="ion-no-padding mt-1 bg-white">
+  <ion-list *ngIf="items.all.length>0">
+    <ion-row
+      class="rrow"
+      *ngFor="let product of items.all;let i = index;"
+      class="ion-no-padding mt-1 bg-white"
+    >
       <!-- burger -->
-        <ng-container *ngIf="product.burger">
-          <ion-col size="3">
-            <img src="data:image/png;base64,{{ product.burger.image }}" style="height: 100%;"/>
+      <ng-container *ngIf="product.burger">
+        <ion-col size="3">
+          <img
+            src="data:image/png;base64,{{ product.burger.image }}"
+            style="height: 100%"
+          />
         </ion-col>
         <ion-col size="9">
-            <h4 class="brand myColor">{{product.burger?.nom}} <span (click)="removeToCart(product.burger)" style="float:right; font-size: 1.4rem;"><ion-icon name="close"></ion-icon></span></h4>
-            <h5 class="amount">{{product.burger?.prix}}</h5>
-            
-            <ion-row class="left">
-              <ion-col size="12" style="display: flex; align-items: center;">
-                <p class="ion-no-margin">Quantité</p> 
-                <p class="qty-bar ion-no-margin" style="padding: 0px 10px;"> <ion-icon (click)="decreaseCartQty(product.burger,product.quantite)" style="margin-right:5px;" class="theme-color-shade"  name="remove-circle"></ion-icon>{{product.quantite}}<ion-icon (click)="increaseCartQty(product.burger,product.quantite)"  style="margin-left:5px;" class="theme-color-shade" name="add-circle"></ion-icon></p>
-              </ion-col>  
-            </ion-row>
+          <h4 class="brand myColor">
+            {{product.burger?.nom}}
+            <span
+              (click)="removeToCart(product.burger)"
+              style="float: right; font-size: 1.4rem"
+              ><ion-icon name="close"></ion-icon
+            ></span>
+          </h4>
+          <h5 class="amount">{{product.burger?.prix}}</h5>
+
+          <ion-row class="left">
+            <ion-col size="12" style="display: flex; align-items: center">
+              <p class="ion-no-margin">Quantité</p>
+              <p class="qty-bar ion-no-margin" style="padding: 0px 10px">
+                <ion-icon
+                  (click)="decreaseCartQty(product.burger,product.quantite)"
+                  style="margin-right: 5px"
+                  class="theme-color-shade"
+                  name="remove-circle"
+                ></ion-icon
+                >{{product.quantite}}<ion-icon
+                  (click)="increaseCartQty(product.burger,product.quantite)"
+                  style="margin-left: 5px"
+                  class="theme-color-shade"
+                  name="add-circle"
+                ></ion-icon>
+              </p>
+            </ion-col>
+          </ion-row>
         </ion-col>
-        </ng-container>
-        <!-- menu -->
-        <ng-container *ngIf="product.menu">
-          <ion-col size="3">
-            <img src="data:image/png;base64,{{ product.menu.image }}" style="height: 100%;"/>
+      </ng-container>
+      <!-- menu -->
+      <ng-container *ngIf="product.menu">
+        <ion-col size="3">
+          <img
+            src="data:image/png;base64,{{ product.menu.image }}"
+            style="height: 100%"
+          />
         </ion-col>
         <ion-col size="9">
-            <h4 class="brand myColor">{{product.menu?.nom}} <span (click)="removeToCart(product.menu)" style="float:right; font-size: 1.4rem;"><ion-icon name="close"></ion-icon></span></h4>
-            <h5 class="amount">{{product.menu?.prix}}</h5>
-            
-            <ion-row class="left">
-              <ion-col size="12" style="display: flex; align-items: center;">
-                <p class="ion-no-margin">Quantité</p> 
-                <p class="qty-bar ion-no-margin" style="padding: 0px 10px;"> <ion-icon (click)="decreaseCartQty(product.menu,product.quantite)"  style="margin-right:5px;" class="theme-color-shade"  name="remove-circle"></ion-icon>{{product.quantite}}<ion-icon (click)="increaseCartQty(product.menu,product.quantite)"  style="margin-left:5px;" class="theme-color-shade" name="add-circle"></ion-icon></p>
-              </ion-col>  
-            </ion-row>
+          <h4 class="brand myColor">
+            {{product.menu?.nom}}
+            <span
+              (click)="removeToCart(product.menu)"
+              style="float: right; font-size: 1.4rem"
+              ><ion-icon name="close"></ion-icon
+            ></span>
+          </h4>
+          <h5 class="amount">{{product.menu?.prix}}</h5>
+
+          <ion-row class="left">
+            <ion-col size="12" style="display: flex; align-items: center">
+              <p class="ion-no-margin">Quantité</p>
+              <p class="qty-bar ion-no-margin" style="padding: 0px 10px">
+                <ion-icon
+                  (click)="decreaseCartQty(product.menu,product.quantite)"
+                  style="margin-right: 5px"
+                  class="theme-color-shade"
+                  name="remove-circle"
+                ></ion-icon
+                >{{product.quantite}}<ion-icon
+                  (click)="increaseCartQty(product.menu,product.quantite)"
+                  style="margin-left: 5px"
+                  class="theme-color-shade"
+                  name="add-circle"
+                ></ion-icon>
+              </p>
+            </ion-col>
+          </ion-row>
         </ion-col>
-        </ng-container>
+      </ng-container>
     </ion-row>
   </ion-list>
-  
 </ion-content>
 
 <ion-footer class="ion-no-border">
@@ -63,9 +112,83 @@
           <h1 class="heading">Order Info</h1>
           <h5 class="mt-1">Total Price: {{prix}} FCFA</h5>
         </div>
-        <ion-button class="tahir-button" expand="full" > Place Order </ion-button>
+        <ion-button id="open-modal" class="tahir-button" expand="full"
+          >COMMANDER
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>
 </ion-footer>
 
+<!-- modal -->
+<ion-modal #modal trigger="open-modal">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+        <ion-title>Modal</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="modal.dismiss()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <h1>Total: <span class="myColor">{{prix}} FCFA</span></h1>
+      <ion-segment (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="livrer">
+          <ion-label>A livrer</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="place">
+          <ion-label>Sur place</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <form [formGroup]="commande" (ngSubmit)="validCmd()">
+        <ng-container *ngIf="activeTab=='livrer'">
+          <ion-item>
+            <ion-label for="">Telephone</ion-label>
+            <ion-input
+              formControlName="telClient"
+              type="text"
+              class="form-control"
+            ></ion-input>
+            <ng-container *ngIf="telClient.invalid && telClient.touched">
+              <span *ngIf="telClient.errors?.required" style="color: red">
+                Obligatoire
+              </span>
+              <span *ngIf="telClient.errors?.minLength" style="color: red">
+                Le Numero doit contenir 9 chiffres
+              </span>
+              <span *ngIf="telClient.errors?.maxLength" style="color: red">
+                Le Numero doit contenir 9 chiffres
+              </span>
+            </ng-container>
+          </ion-item>
+
+          <ion-item>
+            <ion-label for="">Zone</ion-label>
+            <ion-select
+              interface="popover" 
+              placeholder="Choisir une zone"
+              formControlName="zone"
+            >
+              <ng-container *ngFor="let quartier of qrt">
+                <ion-select-option value="{{ quartier.zone.id }}">
+                  {{ quartier.libelle }}
+                </ion-select-option>
+              </ng-container>
+            </ion-select>
+            <ng-container *ngIf="zone.invalid && zone.touched">
+              <span *ngIf="zone.errors?.required" style="color: red">
+                Zone obligatoire
+              </span>
+            </ng-container>
+          </ion-item>
+        </ng-container>
+        <ion-item lines="none"> </ion-item>
+        <ion-button
+          [disabled]="commande.invalid && activeTab!='place'"
+          class="tahir-button"
+          type="submit"
+          >Valider</ion-button
+        >
+      </form>
+    </ion-content>
+  </ng-template>
+</ion-modal>

@@ -1,39 +1,56 @@
 <ion-header
- parallax 
-    imageUrl ="https://t4.ftcdn.net/jpg/03/36/59/07/360_F_336590777_ndbGZFO887CzLwlikwnPFybD3acfz17d.jpg"
-   height ="350"
-   bgPosition ="top"
+  parallax
+  imageUrl="https://t4.ftcdn.net/jpg/03/36/59/07/360_F_336590777_ndbGZFO887CzLwlikwnPFybD3acfz17d.jpg"
+  height="350"
+  bgPosition="top"
 >
- 
   <ion-toolbar class="ion-header">
     <ion-title>LIVREUR</ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button  menu="mainMenu"></ion-menu-button>
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- <ng-container *ngIf="livraison==undefined">
-  <app-loader></app-loader>
+  <ng-container *ngIf="livraison==undefined">
+    <app-loader></app-loader>
   </ng-container>
- <ng-container *ngIf="livraison!=undefined">
-  <ng-container *ngFor="let livr of livraison">
-    <h1>Commandes à livrer</h1>
-  <ng-container *ngFor="let item of livr.commandes">
-    <ion-item *ngIf="item.etat=='EN LIVRAISON'"  button detail routerLink="/details-liv/{{item.id}}">
-      <ion-label>
-        <strong>{{item.client.prenom |uppercase}} {{item.client.nom |uppercase}} </strong><br>
-        <strong>{{item.telClient}}</strong><br>
-        <p>{{item.zone.libelle}}</p>
-        <strong>{{item.montant - item.zone.prix}}</strong> <br>
-        <strong>{{item.zone.prix}} livraison</strong>
-        <h1 class="myColor">{{item.montant}}</h1>
-      </ion-label>
-  </ion-item>
+  <ng-container *ngIf="livraison!=undefined">
+    <ng-container *ngFor="let livr of livraison">
+      <h1>Commandes à livrer</h1>
+      <ion-chip>Default</ion-chip>
+      <ion-chip>Default</ion-chip>
+      <ng-container *ngFor="let item of livr.commandes">
+        <ng-container  *ngIf="item.etat=='EN LIVRAISON'">
+          <ion-item button detail routerLink="/details-liv/{{item.id}}">
+            <ion-label>
+              <strong
+                >{{item.client.prenom |uppercase}} {{item.client.nom |uppercase}} </strong
+              ><br />
+              <strong>{{item.telClient}}</strong><br />
+              <p>{{item.zone.libelle}}</p>
+              <strong>{{item.montant - item.zone.prix}}</strong> <br />
+              <strong>{{item.zone.prix}} livraison</strong>
+              <h1 class="myColor">{{item.montant}}</h1>
+            </ion-label>
+          </ion-item>
+        </ng-container>
+        <ng-container  *ngIf="item.etat=='VALIDEE'" >
+          <ion-item button detail routerLink="/details-liv/{{item.id}}">
+            <ion-label>
+              <strong
+                >{{item.client.prenom |uppercase}} {{item.client.nom |uppercase}} </strong
+              ><br />
+              <strong>{{item.telClient}}</strong><br />
+              <p>{{item.zone.libelle}}</p>
+              <strong>{{item.montant - item.zone.prix}}</strong> <br />
+              <strong>{{item.zone.prix}} livraison</strong>
+              <h1 class="myColor">{{item.montant}}</h1>
+            </ion-label>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ng-container>
   </ng-container>
-  </ng-container>
-  
-</ng-container >
-
 </ion-content>

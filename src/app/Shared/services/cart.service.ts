@@ -284,10 +284,11 @@ export class CartService{
         total += data.prix * data.quantite;
       }
     })
+
     return total;
   }
 
-  emptyCart() {
+  async emptyCart() {
     this.panierSave = {
       burgerCommandes: [],
       portionFriteCommandes: [],
@@ -297,9 +298,8 @@ export class CartService{
       telClient:'',
       all: []
     }
-    localStorage.removeItem("cart");
+   this.token.removeItem('cart')
     return this.Panier = new BehaviorSubject<Cart>(this.panierSave);
-
   }
 
   
